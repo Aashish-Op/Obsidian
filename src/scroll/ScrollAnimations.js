@@ -234,46 +234,33 @@ export class ScrollAnimations {
   _gallerySection() {
     const items = document.querySelectorAll('.gallery__item');
 
-    // Gallery header entrance
-    gsap.fromTo(
-      '.gallery__header',
-      { autoAlpha: 0, y: 60 },
-      {
-        autoAlpha: 1,
-        y: 0,
-        duration: 1,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: '#section-gallery',
-          start: 'top 90%',
-          end: 'top 50%',
-          scrub: 1,
-        },
-      }
-    );
+    // Gallery header — subtle entrance (never fully hidden)
+    gsap.from('.gallery__header', {
+      y: 40,
+      opacity: 0.3,
+      duration: 1,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '#section-gallery',
+        start: 'top 95%',
+        toggleActions: 'play none none none',
+      },
+    });
 
     // Each gallery item entrance + velocity skew
     items.forEach((item, i) => {
-      // Entrance animation
-      gsap.fromTo(
-        item,
-        {
-          autoAlpha: 0,
-          y: 80,
+      // Entrance animation — only translate, never fully hide
+      gsap.from(item, {
+        y: 60,
+        opacity: 0.2,
+        duration: 1.2,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: item,
+          start: 'top 98%',
+          toggleActions: 'play none none none',
         },
-        {
-          autoAlpha: 1,
-          y: 0,
-          duration: 1,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: item,
-            start: 'top 95%',
-            end: 'top 60%',
-            scrub: 1,
-          },
-        }
-      );
+      });
 
       // Velocity-based skew
       ScrollTrigger.create({

@@ -352,7 +352,10 @@ img {
   align-items: center;
   justify-content: center;
   padding: var(--space-lg);
+  padding-left: calc(var(--space-lg) + 2vw);
   position: relative;
+  background: rgba(5, 5, 5, 0.6);
+  backdrop-filter: blur(2px);
 }
 
 .panel__number {
@@ -544,11 +547,14 @@ img {
   padding: var(--space-xl) 0;
   padding-top: calc(var(--space-xl) + 5vh);
   min-height: 100vh;
+  background: linear-gradient(to bottom, transparent 0%, rgba(5, 5, 5, 0.7) 10%, rgba(5, 5, 5, 0.85) 100%);
 }
 
 .gallery__header {
   padding-left: 8vw;
   margin-bottom: var(--space-lg);
+  opacity: 1;
+  visibility: visible;
 }
 
 .gallery__label {

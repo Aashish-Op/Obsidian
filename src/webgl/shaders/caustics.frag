@@ -154,23 +154,23 @@ void main() {
   
   // ── Color mapping ───────────────────────────────────────
   // Deep obsidian base → silver highlights → subtle blue undertone
-  vec3 deepBlack = vec3(0.04, 0.04, 0.05);
-  vec3 midTone = vec3(0.10, 0.10, 0.13);
-  vec3 highlight = vec3(0.30, 0.30, 0.35);
-  vec3 peak = vec3(0.55, 0.52, 0.60);
+  vec3 deepBlack = vec3(0.06, 0.06, 0.07);
+  vec3 midTone = vec3(0.14, 0.14, 0.18);
+  vec3 highlight = vec3(0.35, 0.34, 0.40);
+  vec3 peak = vec3(0.60, 0.58, 0.68);
   
   vec3 color = deepBlack;
-  color = mix(color, midTone, smoothstep(0.15, 0.4, pattern));
-  color = mix(color, highlight, smoothstep(0.4, 0.65, pattern));
-  color = mix(color, peak, smoothstep(0.65, 0.9, pattern) * 0.5);
+  color = mix(color, midTone, smoothstep(0.1, 0.35, pattern));
+  color = mix(color, highlight, smoothstep(0.35, 0.6, pattern));
+  color = mix(color, peak, smoothstep(0.6, 0.85, pattern) * 0.6);
   
-  // Mouse glow — subtle silver bloom near cursor
-  float mouseGlow = smoothstep(0.35, 0.0, mouseDist) * 0.2;
-  color += vec3(mouseGlow * 0.9, mouseGlow * 0.9, mouseGlow);
+  // Mouse glow — silver bloom near cursor
+  float mouseGlow = smoothstep(0.4, 0.0, mouseDist) * 0.25;
+  color += vec3(mouseGlow * 0.9, mouseGlow * 0.85, mouseGlow);
   
-  // Vignette — softer darken at edges
-  float vignette = 1.0 - smoothstep(0.5, 1.5, length((vUv - 0.5) * 1.6));
-  color *= mix(0.6, 1.0, vignette);
+  // Vignette — very subtle
+  float vignette = 1.0 - smoothstep(0.6, 1.8, length((vUv - 0.5) * 1.4));
+  color *= mix(0.7, 1.0, vignette);
   
   gl_FragColor = vec4(color, 1.0);
 }
