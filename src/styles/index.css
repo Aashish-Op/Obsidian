@@ -380,7 +380,7 @@ img {
   font-family: var(--font-display);
   font-size: var(--fs-heading);
   font-weight: 800;
-  line-height: 0.9;
+  line-height: 1.1;
   letter-spacing: 0;
   color: var(--chrome);
   margin-bottom: var(--space-md);

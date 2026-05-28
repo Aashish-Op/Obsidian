@@ -171,12 +171,12 @@ export class ScrollAnimations {
     const panels = track.querySelectorAll('.horizontal__panel');
     const panelCount = panels.length;
 
-    // Calculate total horizontal distance
-    const totalScroll = (panelCount - 1) * window.innerWidth;
+    // Calculate total horizontal distance - shortened for better UX
+    const totalScroll = (panelCount - 1) * window.innerWidth * 0.7; // 30% shorter scroll
 
     // Save the tween to a variable so we can use it as containerAnimation
     const horizontalTween = gsap.to(track, {
-      x: -totalScroll,
+      x: -(panelCount - 1) * window.innerWidth, // Actual visual translation remains the same
       ease: 'none',
       scrollTrigger: {
         trigger: '#section-horizontal',
@@ -191,7 +191,7 @@ export class ScrollAnimations {
 
     // Background text parallax (moves slower)
     gsap.to('.horizontal__bg-text', {
-      x: -totalScroll * 0.3,
+      x: -(panelCount - 1) * window.innerWidth * 0.3,
       ease: 'none',
       scrollTrigger: {
         trigger: '#section-horizontal',
@@ -250,7 +250,7 @@ export class ScrollAnimations {
       // Entrance animation — only translate, never fully hide
       gsap.from(item, {
         y: 60,
-        opacity: 0.2,
+        // Removed opacity: 0.2 to prevent items getting stuck opaque
         duration: 1.2,
         ease: 'power3.out',
         scrollTrigger: {
