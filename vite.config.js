@@ -1,0 +1,14 @@
+import { defineConfig } from 'vite';
+import glsl from 'vite-plugin-glsl';
+
+export default defineConfig({
+  plugins: [glsl()],
+  server: {
+    open: true,
+    port: 3000,
+  },
+  build: {
+    target: 'esnext',
+    minify: 'terser',
+  },
+});

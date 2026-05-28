@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OBSIDIAN — Terminal Luxury Plumbing</title>
+    <meta name="description" content="OBSIDIAN — Where liquid metal meets precision engineering. Luxury sanitaryware forged in darkness." />
+    <meta name="theme-color" content="#0a0a0a" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Outfit:wght@300;400;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/src/styles/index.css" />
+  </head>
+  <body>
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- PRELOADER — Unskippable, wireframe faucet fill     -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <div id="preloader" aria-hidden="true">
+      <div class="preloader__content">
+        <svg class="preloader__faucet" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+          <!-- Wireframe faucet outline -->
+          <defs>
+            <clipPath id="liquid-clip">
+              <rect id="liquid-rect" x="0" y="500" width="400" height="500" />
+            </clipPath>
+          </defs>
+          <!-- Base plate -->
+          <ellipse cx="200" cy="460" rx="90" ry="20" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+          <!-- Body -->
+          <path d="M170 460 L170 200 Q170 160 200 140 Q230 160 230 200 L230 460"
+                fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+          <!-- Spout curve -->
+          <path d="M200 140 Q200 80 280 60 Q340 50 340 100 L340 140"
+                fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+          <!-- Spout tip -->
+          <path d="M330 140 L350 140 L350 160 L330 160 Z"
+                fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+          <!-- Handle -->
+          <path d="M160 280 L120 260 Q100 250 100 230 Q100 210 120 200 L160 190"
+                fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+          <!-- Water drop from spout -->
+          <circle cx="340" cy="180" r="4" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+          <circle cx="340" cy="200" r="3" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+
+          <!-- Filled version (clipped by liquid) -->
+          <g clip-path="url(#liquid-clip)">
+            <ellipse cx="200" cy="460" rx="90" ry="20" fill="none" stroke="rgba(192,192,192,0.9)" stroke-width="2"/>
+            <path d="M170 460 L170 200 Q170 160 200 140 Q230 160 230 200 L230 460"
+                  fill="none" stroke="rgba(192,192,192,0.9)" stroke-width="2"/>
+            <path d="M200 140 Q200 80 280 60 Q340 50 340 100 L340 140"
+                  fill="none" stroke="rgba(192,192,192,0.9)" stroke-width="2"/>
+            <path d="M330 140 L350 140 L350 160 L330 160 Z"
+                  fill="none" stroke="rgba(192,192,192,0.9)" stroke-width="2"/>
+            <path d="M160 280 L120 260 Q100 250 100 230 Q100 210 120 200 L160 190"
+                  fill="none" stroke="rgba(192,192,192,0.9)" stroke-width="2"/>
+            <circle cx="340" cy="180" r="4" fill="rgba(192,192,192,0.6)" stroke="rgba(192,192,192,0.9)" stroke-width="1.5"/>
+            <circle cx="340" cy="200" r="3" fill="rgba(192,192,192,0.4)" stroke="rgba(192,192,192,0.7)" stroke-width="1"/>
+          </g>
+        </svg>
+        <div class="preloader__counter" id="preloader-counter">0</div>
+        <div class="preloader__brand">OBSIDIAN</div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- WEBGL CANVAS — Fixed, always-alive background      -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <canvas id="webgl-canvas"></canvas>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- SCROLL CONTAINER — Transparent DOM overlay          -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <div id="scroll-container">
+
+      <!-- HERO SECTION -->
+      <section id="section-hero" class="section section--hero" aria-label="Hero">
+        <div class="hero__content">
+          <h1 class="hero__title">
+            <span class="hero__title-line" data-anim="title">OBSIDIAN</span>
+          </h1>
+          <p class="hero__subtitle" data-anim="subtitle">FORGED IN DARKNESS</p>
+          <div class="hero__tagline" data-anim="tagline">
+            <span class="hero__tagline-line">Where liquid metal</span>
+            <span class="hero__tagline-line">meets precision engineering</span>
+          </div>
+          <div class="hero__scroll-indicator" data-anim="scroll-indicator">
+            <div class="hero__scroll-line"></div>
+            <span class="hero__scroll-text">SCROLL</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 1: THE DESCENT -->
+      <section id="section-descent" class="section section--descent" aria-label="The Descent">
+        <div class="descent__text">
+          <span class="descent__label" data-anim="descent-label">001</span>
+          <h2 class="descent__heading" data-anim="descent-heading">TERMINAL<br/>PRECISION</h2>
+          <p class="descent__body" data-anim="descent-body">
+            Each fixture is a monolith of engineering — <br/>
+            machined from solid brass, finished in obsidian.
+          </p>
+        </div>
+      </section>
+
+      <!-- SECTION 2: HORIZONTAL SCROLL (PINNED) -->
+      <section id="section-horizontal" class="section section--horizontal" aria-label="Engineered Precision">
+        <div class="horizontal__bg-text" aria-hidden="true">
+          <span class="horizontal__bg-word">ENGINEERED</span>
+          <span class="horizontal__bg-word">PRECISION</span>
+          <span class="horizontal__bg-word">ENGINEERED</span>
+          <span class="horizontal__bg-word">PRECISION</span>
+        </div>
+        <div class="horizontal__track" id="horizontal-track">
+          <div class="horizontal__panel" id="panel-1">
+            <div class="panel__number">01</div>
+            <div class="panel__content">
+              <h3 class="panel__title">FLOW<br/>DYNAMICS</h3>
+              <div class="panel__specs">
+                <div class="spec">
+                  <span class="spec__value" data-anim="spec">2.5 GPM</span>
+                  <span class="spec__label">FLOW RATE</span>
+                </div>
+                <div class="spec">
+                  <span class="spec__value" data-anim="spec">60 PSI</span>
+                  <span class="spec__label">PRESSURE</span>
+                </div>
+                <div class="spec">
+                  <span class="spec__value" data-anim="spec">∅ 35mm</span>
+                  <span class="spec__label">CARTRIDGE</span>
+                </div>
+              </div>
+              <div class="panel__schematic">
+                <svg viewBox="0 0 300 400" class="schematic-svg">
+                  <!-- Technical cross-section drawing -->
+                  <line x1="50" y1="20" x2="50" y2="380" stroke="rgba(192,192,192,0.2)" stroke-width="0.5"/>
+                  <line x1="150" y1="20" x2="150" y2="380" stroke="rgba(192,192,192,0.2)" stroke-width="0.5"/>
+                  <line x1="250" y1="20" x2="250" y2="380" stroke="rgba(192,192,192,0.2)" stroke-width="0.5"/>
+                  <line x1="20" y1="100" x2="280" y2="100" stroke="rgba(192,192,192,0.2)" stroke-width="0.5"/>
+                  <line x1="20" y1="200" x2="280" y2="200" stroke="rgba(192,192,192,0.2)" stroke-width="0.5"/>
+                  <line x1="20" y1="300" x2="280" y2="300" stroke="rgba(192,192,192,0.2)" stroke-width="0.5"/>
+                  <!-- Faucet cross-section -->
+                  <path d="M120 350 L120 180 Q120 140 150 120 Q180 140 180 180 L180 350" fill="none" stroke="rgba(192,192,192,0.6)" stroke-width="1.5"/>
+                  <path d="M150 120 Q150 80 200 65 Q240 55 240 90 L240 120 L220 120 L220 100 Q220 75 200 80 Q165 90 165 120" fill="none" stroke="rgba(192,192,192,0.6)" stroke-width="1.5"/>
+                  <!-- Dimension lines -->
+                  <line x1="100" y1="180" x2="100" y2="350" stroke="rgba(192,192,192,0.3)" stroke-width="0.5" stroke-dasharray="4,4"/>
+                  <text x="90" y="270" fill="rgba(192,192,192,0.4)" font-size="8" text-anchor="end" font-family="Inter">170mm</text>
+                  <line x1="120" y1="370" x2="180" y2="370" stroke="rgba(192,192,192,0.3)" stroke-width="0.5" stroke-dasharray="4,4"/>
+                  <text x="150" y="385" fill="rgba(192,192,192,0.4)" font-size="8" text-anchor="middle" font-family="Inter">60mm</text>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="horizontal__panel" id="panel-2">
+            <div class="panel__number">02</div>
+            <div class="panel__content">
+              <h3 class="panel__title">MATERIAL<br/>SCIENCE</h3>
+              <div class="panel__specs">
+                <div class="spec">
+                  <span class="spec__value" data-anim="spec">BRASS</span>
+                  <span class="spec__label">CORE ALLOY</span>
+                </div>
+                <div class="spec">
+                  <span class="spec__value" data-anim="spec">PVD</span>
+                  <span class="spec__label">COATING</span>
+                </div>
+                <div class="spec">
+                  <span class="spec__value" data-anim="spec">0.3μm</span>
+                  <span class="spec__label">SURFACE</span>
+                </div>
+              </div>
+              <div class="panel__material-grid">
+                <div class="material-swatch material-swatch--obsidian">
+                  <span class="material-swatch__label">OBSIDIAN MATTE</span>
+                </div>
+                <div class="material-swatch material-swatch--gunmetal">
+                  <span class="material-swatch__label">GUNMETAL</span>
+                </div>
+                <div class="material-swatch material-swatch--chrome">
+                  <span class="material-swatch__label">LIQUID CHROME</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="horizontal__panel" id="panel-3">
+            <div class="panel__number">03</div>
+            <div class="panel__content">
+              <h3 class="panel__title">ERGONOMIC<br/>GEOMETRY</h3>
+              <div class="panel__specs">
+                <div class="spec">
+                  <span class="spec__value" data-anim="spec">15°</span>
+                  <span class="spec__label">SPOUT ANGLE</span>
+                </div>
+                <div class="spec">
+                  <span class="spec__value" data-anim="spec">240mm</span>
+                  <span class="spec__label">REACH</span>
+                </div>
+                <div class="spec">
+                  <span class="spec__value" data-anim="spec">180°</span>
+                  <span class="spec__label">SWIVEL</span>
+                </div>
+              </div>
+              <div class="panel__schematic">
+                <svg viewBox="0 0 300 400" class="schematic-svg">
+                  <!-- Ergonomic angle diagram -->
+                  <circle cx="150" cy="200" r="100" fill="none" stroke="rgba(192,192,192,0.1)" stroke-width="0.5"/>
+                  <circle cx="150" cy="200" r="60" fill="none" stroke="rgba(192,192,192,0.1)" stroke-width="0.5"/>
+                  <line x1="150" y1="200" x2="250" y2="200" stroke="rgba(192,192,192,0.3)" stroke-width="0.5"/>
+                  <line x1="150" y1="200" x2="230" y2="140" stroke="rgba(192,192,192,0.6)" stroke-width="1.5"/>
+                  <path d="M200 200 A50 50 0 0 0 190 170" fill="none" stroke="rgba(192,192,192,0.5)" stroke-width="1"/>
+                  <text x="210" y="185" fill="rgba(192,192,192,0.5)" font-size="10" font-family="Inter">15°</text>
+                  <!-- Reach measurement -->
+                  <line x1="150" y1="320" x2="280" y2="320" stroke="rgba(192,192,192,0.4)" stroke-width="1" stroke-dasharray="4,4"/>
+                  <text x="215" y="340" fill="rgba(192,192,192,0.4)" font-size="9" text-anchor="middle" font-family="Inter">240mm REACH</text>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="horizontal__panel" id="panel-4">
+            <div class="panel__number">04</div>
+            <div class="panel__content">
+              <h3 class="panel__title">ZERO<br/>WASTE</h3>
+              <div class="panel__large-stat">
+                <span class="panel__stat-number">98<span class="panel__stat-unit">%</span></span>
+                <span class="panel__stat-label">WATER EFFICIENCY RATING</span>
+              </div>
+              <p class="panel__description">
+                Aerator technology reduces consumption<br/>
+                without compromising the sensation of flow.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 3: DISTORTION GALLERY -->
+      <section id="section-gallery" class="section section--gallery" aria-label="Gallery">
+        <div class="gallery__header">
+          <span class="gallery__label">COLLECTION</span>
+          <h2 class="gallery__title">ATMOSPHERES</h2>
+        </div>
+
+        <div class="gallery__grid">
+          <div class="gallery__item gallery__item--left" data-hover-distortion>
+            <div class="gallery__image-wrapper">
+              <img class="gallery__image" src="/gallery-1.jpg" alt="Dark luxury bathroom environment" loading="lazy" />
+              <canvas class="gallery__distortion-canvas"></canvas>
+            </div>
+            <span class="gallery__caption">VOID COLLECTION — BATH</span>
+          </div>
+
+          <div class="gallery__item gallery__item--right" data-hover-distortion>
+            <div class="gallery__image-wrapper">
+              <img class="gallery__image" src="/gallery-2.jpg" alt="Matte black faucet detail" loading="lazy" />
+              <canvas class="gallery__distortion-canvas"></canvas>
+            </div>
+            <span class="gallery__caption">MONOLITH SERIES — FAUCET</span>
+          </div>
+
+          <div class="gallery__item gallery__item--left" data-hover-distortion>
+            <div class="gallery__image-wrapper">
+              <img class="gallery__image" src="/gallery-3.jpg" alt="Minimalist dark bathroom space" loading="lazy" />
+              <canvas class="gallery__distortion-canvas"></canvas>
+            </div>
+            <span class="gallery__caption">OBSIDIAN SUITE — WASHROOM</span>
+          </div>
+
+          <div class="gallery__item gallery__item--right" data-hover-distortion>
+            <div class="gallery__image-wrapper">
+              <img class="gallery__image" src="/gallery-4.jpg" alt="Water flowing from luxury faucet" loading="lazy" />
+              <canvas class="gallery__distortion-canvas"></canvas>
+            </div>
+            <span class="gallery__caption">FLUX — WATER DETAIL</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+      <footer id="section-footer" class="section section--footer" aria-label="Footer">
+        <div class="footer__content">
+          <h2 class="footer__heading">OBSIDIAN</h2>
+          <p class="footer__tagline">TERMINAL LUXURY</p>
+          <div class="footer__line"></div>
+          <div class="footer__links">
+            <a href="#" class="footer__link">COLLECTION</a>
+            <a href="#" class="footer__link">ENGINEERING</a>
+            <a href="#" class="footer__link">ATELIER</a>
+            <a href="#" class="footer__link">CONTACT</a>
+          </div>
+          <p class="footer__copyright">© 2026 OBSIDIAN. ALL RIGHTS RESERVED.</p>
+        </div>
+      </footer>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
