@@ -23,6 +23,12 @@ export class ScrollAnimations {
     this._footerSection();
     this._globalScrollProgress();
     this._velocityTracking();
+
+    // Refresh ScrollTrigger after everything is set up
+    // Pinned sections can offset trigger positions — this recalculates
+    setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 100);
   }
 
   /**
@@ -231,16 +237,16 @@ export class ScrollAnimations {
     // Gallery header entrance
     gsap.fromTo(
       '.gallery__header',
-      { opacity: 0, y: 60 },
+      { autoAlpha: 0, y: 60 },
       {
-        opacity: 1,
+        autoAlpha: 1,
         y: 0,
         duration: 1,
         ease: 'power3.out',
         scrollTrigger: {
           trigger: '#section-gallery',
-          start: 'top 80%',
-          end: 'top 40%',
+          start: 'top 90%',
+          end: 'top 50%',
           scrub: 1,
         },
       }
@@ -252,18 +258,18 @@ export class ScrollAnimations {
       gsap.fromTo(
         item,
         {
-          opacity: 0,
-          y: 120,
+          autoAlpha: 0,
+          y: 80,
         },
         {
-          opacity: 1,
+          autoAlpha: 1,
           y: 0,
           duration: 1,
           ease: 'power3.out',
           scrollTrigger: {
             trigger: item,
-            start: 'top 90%',
-            end: 'top 50%',
+            start: 'top 95%',
+            end: 'top 60%',
             scrub: 1,
           },
         }

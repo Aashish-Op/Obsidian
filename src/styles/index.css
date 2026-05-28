@@ -99,7 +99,6 @@ img {
 .section {
   position: relative;
   width: 100%;
-  overflow: hidden;
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -257,7 +256,7 @@ img {
    SECTION 1: THE DESCENT
    ═══════════════════════════════════════════════════════════════ */
 .section--descent {
-  min-height: 200vh;
+  min-height: 150vh;
   display: flex;
   align-items: flex-start;
   padding-top: 30vh;
@@ -310,6 +309,7 @@ img {
   min-height: 100vh;
   overflow: hidden;
   position: relative;
+  margin-top: -5vh;
 }
 
 .horizontal__bg-text {
@@ -370,8 +370,10 @@ img {
 
 .panel__content {
   max-width: 700px;
+  width: 100%;
   position: relative;
   z-index: 1;
+  padding-left: var(--space-sm);
 }
 
 .panel__title {
@@ -379,10 +381,9 @@ img {
   font-size: var(--fs-heading);
   font-weight: 800;
   line-height: 0.9;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
   color: var(--chrome);
   margin-bottom: var(--space-md);
-  mix-blend-mode: exclusion;
 }
 
 .panel__specs {
@@ -509,10 +510,39 @@ img {
 }
 
 /* ═══════════════════════════════════════════════════════════════
+   SECTION TRANSITION — Visual bridge between sections
+   ═══════════════════════════════════════════════════════════════ */
+.section-transition {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: var(--space-lg) 8vw;
+  position: relative;
+  z-index: 1;
+}
+
+.section-transition__line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(192, 192, 192, 0.12), transparent);
+}
+
+.section-transition__label {
+  font-family: var(--font-body);
+  font-size: var(--fs-caption);
+  letter-spacing: 0.5em;
+  color: var(--text-dim);
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+
+/* ═══════════════════════════════════════════════════════════════
    SECTION 3: DISTORTION GALLERY
    ═══════════════════════════════════════════════════════════════ */
 .section--gallery {
   padding: var(--space-xl) 0;
+  padding-top: calc(var(--space-xl) + 5vh);
   min-height: 100vh;
 }
 
@@ -552,6 +582,7 @@ img {
   will-change: transform;
   pointer-events: all;
   cursor: pointer;
+  opacity: 1;
 }
 
 .gallery__item--left {
@@ -567,13 +598,21 @@ img {
   overflow: hidden;
   aspect-ratio: 16/10;
   background: var(--gunmetal);
+  border: 1px solid rgba(192, 192, 192, 0.06);
+  min-height: 250px;
 }
 
 .gallery__image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: none; /* GSAP handles this */
+  display: block;
+  opacity: 1;
+  transition: transform 0.6s var(--ease-out-expo);
+}
+
+.gallery__item:hover .gallery__image {
+  transform: scale(1.03);
 }
 
 .gallery__distortion-canvas {
