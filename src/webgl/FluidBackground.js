@@ -15,8 +15,8 @@ export class FluidBackground {
       uResolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) },
     };
 
-    // Large plane filling the camera view
-    const geometry = new THREE.PlaneGeometry(12, 8, 128, 128);
+    // Extremely large plane to ensure it covers even ultrawide monitors
+    const geometry = new THREE.PlaneGeometry(30, 20, 128, 128);
     const material = new THREE.ShaderMaterial({
       vertexShader: causticsVert,
       fragmentShader: causticsFrag,

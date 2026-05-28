@@ -32,7 +32,7 @@ export class HoverDistortion {
 
       const rect = item.querySelector('.gallery__image-wrapper').getBoundingClientRect();
       renderer.setSize(rect.width, rect.height);
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+      renderer.setPixelRatio(window.devicePixelRatio); // Use native pixel ratio for sharpness
 
       const scene = new THREE.Scene();
       const camera = new THREE.OrthographicCamera(-0.5, 0.5, 0.5, -0.5, 0.01, 10);

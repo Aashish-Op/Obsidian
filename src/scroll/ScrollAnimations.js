@@ -174,8 +174,8 @@ export class ScrollAnimations {
     // Calculate total horizontal distance
     const totalScroll = (panelCount - 1) * window.innerWidth;
 
-    // Pin the section and move track horizontally
-    gsap.to(track, {
+    // Save the tween to a variable so we can use it as containerAnimation
+    const horizontalTween = gsap.to(track, {
       x: -totalScroll,
       ease: 'none',
       scrollTrigger: {
@@ -207,20 +207,18 @@ export class ScrollAnimations {
       
       gsap.fromTo(
         specs,
-        { opacity: 0, y: 30 },
+        { opacity: 0, x: 50 },
         {
           opacity: 1,
-          y: 0,
-          stagger: 0.15,
+          x: 0,
+          stagger: 0.1,
           duration: 0.8,
           ease: 'power3.out',
           scrollTrigger: {
             trigger: panel,
-            start: 'left 80%',
-            end: 'left 40%',
-            scrub: 1,
-            containerAnimation: gsap.getById && undefined, // Part of horizontal scroll
-            horizontal: true,
+            containerAnimation: horizontalTween,
+            start: 'left center', // When left edge of panel reaches center of screen
+            toggleActions: 'play none none reverse',
           },
         }
       );
